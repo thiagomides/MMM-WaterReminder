@@ -4,6 +4,8 @@ WaterReminder Module for MagicMirror<sup>2</sup>
 
 ## Example
 
+![Module working](.github/screenshot.png)  
+
 
 ## Dependencies
 
