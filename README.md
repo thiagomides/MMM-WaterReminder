@@ -3,7 +3,9 @@
 A simple and configurable Water Reminder Module for MagicMirror<sup>2</sup>. Also, you can use it as a reminder for any purpose by replacing the predefined phrases. Additionally, this module can help you to understand how to make your first MM module.
 ## Example
 
-![Module working](.github/screenshot.png)  
+![Module design](.github/screenshot.png)  
+![Module working](.github/working.gif)  
+
 
 
 ## Dependencies
