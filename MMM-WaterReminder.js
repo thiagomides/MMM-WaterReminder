@@ -4,7 +4,7 @@
  * @author thiagomides
  * @license MIT
  *
- * @see  https://github.com/fewieden/MMM-AlarmClock
+ * @see  https://github.com/thiagomides/MMM-WaterReminder
  */
 
 
@@ -22,17 +22,17 @@ Module.register("MMM-WaterReminder", {
 		additionalPhrases: [],
 		startTime: "00:00",
 		endTime: "23:59",
-		messageDuration: 1 * 10 * 1000,
-		animationSpeed: 4 * 1000,
-		reminderFrequency: 10 * 1000,
-		classes: "",
+		messageDuration: 1 * 60 * 1000, // 1 min showing on the screen
+        animationSpeed: 4 * 1000, // 4 seconds for fading
+        reminderFrequency: 60 * 60 * 1000, // hourly reminder
+        classes: "bright medium light",
 		color: "#fff",
 		idleMessage: "<br/>",
 		logo: true,
 		days: [0,1,2,3,4,5,6],
 		alarm: {
 			status: false, 
-			daysWithAudibleReminder: [],
+			daysWithAudibleReminder: [0],
 			src: "done-for-you.mp3",
 			startTime: "09:00",
 			endTime: "17:00",
@@ -40,11 +40,12 @@ Module.register("MMM-WaterReminder", {
 		
 	},
 
-	// Define required scripts.
+	// Define required styles.
 	getStyles: function () {
 		return ["font-awesome.css"];
 	},
-
+	
+	// Define required scripts.
 	getScripts: function () {
 		return ["moment.js"];
 	},
@@ -59,10 +60,8 @@ Module.register("MMM-WaterReminder", {
 		this.config.reminderFrequency = Math.round(this.config.reminderFrequency/this.config.animationSpeed);
 		this.format = 'hh:mm';
 
-
-		if (this.config.alarm["status"])		this.config.alarm["daysWithAudibleReminder"] = this.config.alarm["daysWithAudibleReminder"] ? this.config.alarm["daysWithAudibleReminder"]: this.config.days;
+		if (this.config.alarm["status"]) this.config.alarm["daysWithAudibleReminder"] = this.config.alarm["daysWithAudibleReminder"].length > 0 ? this.config.alarm["daysWithAudibleReminder"]: this.config.days;
 		else this.config.alarm["daysWithAudibleReminder"] = [];
-
 
 	},
 
@@ -138,7 +137,7 @@ Module.register("MMM-WaterReminder", {
 		let now = moment();
 
 		for (var i = days.length - 1; i >= 0; i--) {
-			if (now.weekday() == this.config.days[i]) IsValidDay = true;
+			if (now.weekday() == days[i]) IsValidDay = true;
 		}
 
 		if (!IsValidDay) return 0;
@@ -146,7 +145,7 @@ Module.register("MMM-WaterReminder", {
 		time = moment(moment(),this.format);
 		beforeTime = moment(startTime, this.format);
 		afterTime = moment(endTime, this.format);
-			
+
 		if (time.isBetween(beforeTime, afterTime)) return 1;	
 		
 
