@@ -1,7 +1,6 @@
 # MMM-WaterReminder ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)
 
-A simple and configurable Water Reminder Module for MagicMirror<sup>2</sup>  
-
+A simple and configurable Water Reminder Module for MagicMirror<sup>2</sup>. Also, you can use it as a reminder for any purpose by replacing the predefined phrases. Additionally, this module can help you to understand how to make your first MM module.
 ## Example
 
 ![Module working](.github/screenshot.png)  
@@ -22,14 +21,7 @@ A simple and configurable Water Reminder Module for MagicMirror<sup>2</sup>
     module: 'MMM-WaterReminder',
     position: 'top_center',
     config: {
-        foo: "Hey buddy, you should have some water!",
-        additionalPhrases: ["Drink water!"],
-        alarm: {
-            status: true, 
-            src: "done-for-you.mp3",
-            ...
-        },
-        ...
+         ...
     }
 }
 ```
@@ -54,7 +46,7 @@ this is the default configuration defined if you don't define any value
         color: "#fff",
         idleMessage: "<br/>",
         logo: true,
-        days: [0,1,2,3,4,5,6],
+        days: [0,1,2,3,4,5,6], // all week
         alarm: {
             status: false, 
             daysWithAudibleReminder: [1,2,3,4,5],
@@ -72,12 +64,12 @@ this is the default configuration defined if you don't define any value
 | `foo` | `Did you have enough water today?` | This is the module initialization message
 | `phrases` | `["Did you have enough water today?", ... , "Are you anxious for the next glass of water?"]` | An array of phrases that will be randomly displayed. 
 | `additionalPhrases` | `[]` | An array of phrases to be used with the default array of phrases. 
-| `days` | Days of the week that the reminder should work . <br/>``0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday``<br/><br/> **Example (workdays) :** ``[1, 2, 3, 4, 5], // From Monday to Friday .`` |
+| `days` | `[0,1,2,3,4,5,6]` <br/> From Sunday to Saturday  | Days of the week that the reminder should work . <br/>``0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday``<br/><br/> **Example (workdays) :** ``[1, 2, 3, 4, 5], // From Monday to Friday .`` |
 | `startTime` | `00:00` | The time that the module will start to work. 
 | `endTime` | `23:59` | The time that the module will stop to work. 
 | `messageDuration` | `60000` (1 min) |  How long does the reminder should remain on the screen?  
 | `animationSpeed` | `4000` (4 sec) | Speed of the update animation. 
-| `reminderFrequency` | `1800000` (30 min) | How often does the reminder should appear?
+| `reminderFrequency` | `3600000` (1 hour) | How often does the reminder should appear?
 | `classes` | `bright medium light` | Override the CSS classes of the div showing the reminder.
 | `color` | `#fff` | Sets the color of the reminder.
 | `idleMessage` | `</br>` | Text displayed during the idle time, that is, before and after a reminder. 
@@ -89,8 +81,8 @@ this is the default configuration defined if you don't define any value
 | **Option** | **Default** | **Description** |
 | --- | --- | --- |
 | `status` | `false` | Enable or disable audible reminder |
-| `startTime` | `09:00` | Time at which the reminder should start to sound. e.g.,  reminder should sound only during working hours. |
-| `endTime` | `17:00` | Time at which the reminder should stop to sound. e.g., time to get off from the work |
+| `startTime` | `09:00` | Time at which the reminder should start being audible. e.g.,  reminder should sound only during working hours. |
+| `endTime` | `17:00` | Time at which the reminder should stop being audible. e.g., time to get off from the work |
 | `daysWithAudibleReminder` | `[]` | Days of the week that the reminder should display a sound. If  `status = true` and the sound option `daysWithAudibleReminder = []` is empty, the sound will be displayed following the value in `days` |
 | `src` | `done-for-you.mp3` | Name or the url of the mp3 file. By default, the sound of the config will be use if this option is empty. |
 
