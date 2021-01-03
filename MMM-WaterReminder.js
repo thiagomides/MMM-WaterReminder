@@ -23,9 +23,9 @@ Module.register("MMM-WaterReminder", {
 		startTime: "00:00",
 		endTime: "23:59",
 		messageDuration: 1 * 60 * 1000, // 1 min showing on the screen
-        animationSpeed: 4 * 1000, // 4 seconds for fading
-        reminderFrequency: 60 * 60 * 1000, // hourly reminder
-        classes: "bright medium light",
+        	animationSpeed: 4 * 1000, // 4 seconds for fading
+        	reminderFrequency: 60 * 60 * 1000, // hourly reminder
+        	classes: "bright medium light",
 		color: "#fff",
 		idleMessage: "<br/>",
 		logo: true,
